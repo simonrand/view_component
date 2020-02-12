@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 require "active_support/configurable"
-
 module ActionView
   module Component
     class Base < ActionView::Base
