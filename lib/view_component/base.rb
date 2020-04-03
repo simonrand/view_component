@@ -169,7 +169,14 @@ module ViewComponent
       end
 
       def inlined?
-        instance_methods.grep(/^call/).present? && templates.empty?
+        return false unless templates.empty?
+
+        # Only check if an inline render method has been defined on this class
+        # or on an ancestor, up to (but excluding) ViewComponent::Base
+        ancestor_classes = (ancestors[0...ancestors.index(ViewComponent::Base)] - included_modules)
+        return false unless ancestor_classes
+
+        ancestor_classes.any? { |ancestor_class| ancestor_class.instance_methods(false).grep(/^call/).present? }
       end
 
       def compile!
