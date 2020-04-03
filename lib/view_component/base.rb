@@ -169,7 +169,7 @@ module ViewComponent
       end
 
       def inlined?
-        instance_methods.include?(:call) && templates.empty?
+        instance_methods.grep(/^call/).present? && templates.empty?
       end
 
       def compile!
