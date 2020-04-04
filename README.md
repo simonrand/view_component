@@ -211,6 +211,22 @@ class InlineComponent < ViewComponent::Base
 end
 ```
 
+It is also possible to render variants inline by creating additional `call_` methods.
+
+```ruby
+class InlineVariantComponent < ViewComponent::Base
+  def call
+    link_to "Default", default_path
+  end
+
+  def call_variant
+    link_to "variant", variant_path
+  end
+end
+```
+
+Using a mixture of templates and inline rendering in a component is not supported.
+
 ### Conditional Rendering
 
 Components can implement a `#render?` method to determine if they should be rendered.
@@ -493,10 +509,15 @@ Bug reports and pull requests are welcome on GitHub at https://github.com/github
 |@mellowfish|@horacio|@dukex|@dark-panda|@smashwilson|
 |Spring Hill, TN|Buenos Aires|São Paulo||Gambrills, MD|
 
-|<img src="https://avatars.githubusercontent.com/blakewilliams?s=256" alt="blakewilliams" width="128" />|<img src="https://avatars.githubusercontent.com/seanpdoyle?s=256" alt="seanpdoyle" width="128" />|<img src="https://avatars.githubusercontent.com/tclem?s=256" alt="tclem" width="128" />|<img src="https://avatars.githubusercontent.com/nashby?s=256" alt="nashby" width="128" />
+|<img src="https://avatars.githubusercontent.com/blakewilliams?s=256" alt="blakewilliams" width="128" />|<img src="https://avatars.githubusercontent.com/seanpdoyle?s=256" alt="seanpdoyle" width="128" />|<img src="https://avatars.githubusercontent.com/tclem?s=256" alt="tclem" width="128" />|<img src="https://avatars.githubusercontent.com/nashby?s=256" alt="nashby" width="128" />|
 |:---:|:---:|:---:|:---:|
 |@blakewilliams|@seanpdoyle|@tclem|@nashby|
 |Boston, MA|New York, NY|San Francisco, CA|Minsk|
+
+|<img src="https://avatars.githubusercontent.com/simonrand?s=256" alt="simonrand" width="128" />|
+|:---:|
+|@simonrand|
+|Dublin, Ireland|
 
 ## License
 
